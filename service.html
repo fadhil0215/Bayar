@@ -1,0 +1,372 @@
+<!-- Subscribe Tamzidan Madiyin di YouTube -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            background-image: url("./img/background.jpg");
+            background-size: cover;
+            overflow: auto;
+            position: relative;
+        }
+
+        nav {
+            width: 100%;
+            height: 10vh;
+            position: relative;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: rgb(25, 233, 222 );
+            text-shadow: 0 0 10px rgb(25, 233, 222);
+        }
+
+        .hamburg, .cancel {
+            cursor: pointer;
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            color: white;
+            display: none;
+            font-size: clamp(2.5rem, 0.5rem + 5vw, 3rem);
+        }
+
+        .nav-container .links {
+            display: flex;
+        }
+
+        .nav-container .links a {
+            font-size: 1.2rem;
+            color: white;
+            margin: 0 20px;
+            text-decoration: none;
+            font-weight: 550;
+            transition: 0.3s linear;
+        }
+
+        .nav-container .links a:hover {
+            color: rgb(25, 233, 222);
+            border-bottom: 2px solid rgb(25, 233, 222);
+        }
+
+        .nav-container .links .active {
+            color: rgb(25, 233, 222);
+            border-bottom: 2px solid rgb(25, 233, 222);
+        }
+
+        .dropdown {
+            z-index: 1000;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            transform: translateY(-500px);
+            width: 100%;
+            height: auto;
+            backdrop-filter: blur(4px) brightness(40%);
+            box-shadow: 0 0 20px black;
+            transition: 0.2s linear;
+        }
+
+        .dropdown .links a {
+            display: flex;
+            color: white;
+            text-decoration: none;
+            padding: 15px 0;
+            justify-content: center;
+            align-items: center;
+            transition: 0.2s linear;
+        }
+
+        .dropdown .links a:hover {
+            background-color: rgb(25, 233, 222);
+        }
+
+        /* Service Section Styles */
+        .services-container {
+            width: 100%;
+            min-height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .services-content {
+            width: 80%;
+            max-width: 1200px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            color: white;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .services-header h1 {
+            font-size: 2.5rem;
+            color: rgb(25, 233, 222);
+            text-shadow: 0 0 10px rgb(25, 233, 222);
+            margin-bottom: 1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: rgb(11, 83, 80);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px rgb(73, 150, 146);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: rgb(25, 233, 222);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            color: rgb(25, 233, 222);
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #cccccc;
+        }
+
+        .service-price {
+            margin-top: 1.5rem;
+            font-size: 1.2rem;
+            color: rgb(25, 233, 222);
+            font-weight: bold;
+        }
+
+        @media (max-height: 800px) {
+            body {
+                height: auto;
+                min-height: 100vh;
+            }
+            
+            .services-container {
+                height: auto;
+                min-height: 90vh;
+            }
+        }
+
+        @media (max-width: 884px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            nav .logo {
+                position: absolute;
+                top: 16px;
+                left: 15px;
+                font-size: 1.5rem;
+            }
+
+            .nav-container .links {
+                display: none;
+            }
+
+            .hamburg, .cancel {
+                display: block;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .services-container {
+                padding: 1rem;
+            }
+
+            .services-content {
+                width: 95%;
+                padding: 1.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-header h1 {
+                font-size: 2rem;
+            }
+
+            .service-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+    <title>Services - Portfolio Website</title>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo" data-aos="zoom-in" data-aos-duration="1500">
+                Pusat Jual Beli Paket Usaha Laundry <span>MODERN</span>
+            </div>
+            <div class="links">
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100"><a href="index.html">Home</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100"><a href="https://wa.me/+6283876764338">Hubungi Whatsapp</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200"><a href="about.html">About</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300"><a href="catalog.html">Catalog</a></div>
+                <div class="link active" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400"><a href="service.html">Testimoni</a></div>
+                <div class="link active" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400"><a href="pemasangan.html">Testimoni Pemasangan</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500"><a href="contact.html">Contact</a></div>
+            </div>
+        </div>
+        <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+        <div class="dropdown">
+            <div class="links">
+                <a href="index.html">Home</a>
+                <a href="https://wa.me/+6283876764338">Hubungi Whatsapp</a>
+                <a href="about.html">About</a>
+                <a href="catalog.html">Catalog</a>
+                <a href="service.html">Testimoni</a>
+                <a href="pemasangan.html">Testimoni Pemasangan</a>
+                <a href="contact.html">Contact</a>
+                <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+            </div>
+        </div>
+    </nav>
+
+    <div class="services-container">
+        <div class="services-content">
+            <div class="services-header" data-aos="fade-down" data-aos-duration="1500">
+                <h1>Trusted Testimoni</h1>
+            </div>
+            <div class="services-grid">
+                <!-- Web Development -->
+                <div class="service-card" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100">
+                    <div class="service-icon">
+                        <i class="fas fa-coe"></i>
+                    </div>
+                    <h3 class="service-title">TRUSTED 1</h3>
+                    <p class="service-description">Saya bergabung dengan paket usaha laundry [Pusat jual beli Paket usaha laundry modern] dan sangat terbantu dengan semua fasilitas dan dukungan yang diberikan. Mulai dari pelatihan, peralatan lengkap, hingga bimbingan dalam menjalankan bisnis. Sekarang usaha laundry saya sudah berkembang pesat!"</p>
+                    <div class="service-price">Pesan Sekarang</div>
+                </div>
+
+                <!-- UI/UX Design -->
+                <div class="service-card" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brsh"></i>
+                    </div>
+                    <h3 class="service-title">TRUSTED 2</h3>
+                    <p class="service-description">Awalnya saya ragu mencoba Beli Paket usaha laundry Qris, tapi setelah menggunakan layanan [Pusat jual beli paket usaha Laundry modern], saya sangat puas! Teknisinya pengalaman dan ramah, pengerjaannya Rapi dan keren tampilan laundry saya dan Harganya juga terjangkau. Sangat direkomendasikan!</p>
+                    <div class="service-price">Pesan Sekarang</div>
+                </div>
+
+                <!-- Mobile App Development -->
+                <div class="service-card" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-al"></i>
+                    </div>
+                    <h3 class="service-title">TRUSTED 3</h3>
+                    <p class="service-description">"Saya suka dengan kualitas peralatan dan mesin yang digunakan oleh [pusat jual beli paket usaha laundry modern]. Laundry saya jadi keren dan mewah tampilannya. [Pusat jual beli paket usaha laundry modern] juga menyediakan berbagai pilihan paket usaha laundry yang berkualitas</p>
+                    <div class="service-price">Pesan Sekarang</div>
+                </div>
+
+                <!-- Digital Marketing -->
+                <div class="service-card" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="700">
+                    <div class="service-icon">
+                        <i class="fas fa-bullhrn"></i>
+                    </div>
+                    <h3 class="service-title">TRUSTED 4</h3>
+                    <p class="service-description">Saya sudah buka usaha laundry cabang ke 2 dan semua mesin dan peralatan tambahan lainnya beli di (Pusat jual beli paket usaha laundry modern) saya sangat puas dengan pelayanannya, pengerjaannya yg Rapi dan teknisi yg profesional,pokoknya recommended!!!</p>
+                    <div class="service-price">Pesan Sekarang</div>
+                </div>
+
+                <!-- Graphic Design -->
+                <div class="service-card" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="900">
+                    <div class="service-icon">
+                        <i class="fas fa-palett"></i>
+                    </div>
+                    <h3 class="service-title">TRUSTED 5</h3>
+                    <p class="service-description">Pusat jual beli paket usaha laundry modern memang lengkap Mesinnya tersedia berbagai merk dan kapasitas dan di bungkus dengan paket usaha laundry yg terdiri dari mesin dan perlengkapan tambahan lainnya termasuk partisi rumah mesin untuk mempercantik tampilan laundry,jadi saya merasa puas karena semuanya terima beres,saya hanya beli paket sesuai yg saya pilih , siapkan tempat ruko, naikkan daya listrik dan siapkan tabung gas elpiji 
+Pusat jual beli paket usaha laundry modern Recommended 👍👍👍</p>
+                    <div class="service-price">Pesan Sekarang</div>
+                </div>
+
+                <!-- Consulting -->
+                <div class="service-card" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1100">
+                    <div class="service-icon">
+                        <i class="fas fa-coments"></i>
+                    </div>
+                    <h3 class="service-title">TRUSTED 6
+                    </h3>
+                    <p class="service-description">Pembelian paket usaha laundry Card di sini i sudah termasuk training atau pelatihan untuk pengelola dan karyawan meliputi; SOP Operasional, Sistem Kasir, Cara Menghadapi Pelanggan, Cara Menghadapi Komplain, Cara Merawat Mesin baik harian, mingguan maupun bulanan dan Cara Menangani Kendala Mesin Secara Mandiri (sebelum teknisi datang). 
+Semua ini agar memudahkan Anda sebagai pemilik untuk mempersiapkan sistem yang baik dalam berbisnis laundry card tanpa harus Anda menungguinya.
+The best pokoknya 👍👍👍</p>
+                    <div class="service-price">Pesan Sekarang</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({offset: 0});
+        
+        function hamburg() {
+            const navbar = document.querySelector(".dropdown")
+            navbar.style.transform = "translateY(0px)"
+        }
+        
+        function cancel() {
+            const navbar = document.querySelector(".dropdown")
+            navbar.style.transform = "translateY(-500px)"
+        }
+    </script>
+</body>
+</html>
+
+<!-- Subscribe Tamzidan Madiyin di YouTube -->

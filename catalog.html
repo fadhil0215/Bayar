@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Parfum OOP</title>
+  <link rel="stylesheet" href="shop.css" />
+</head>
+<body>
+
+          <div class="logo" data-aos="zoom-in" data-aos-duration="1500">
+                Pusat Jual Beli Paket Usaha Laundry <span>MODERN</span>
+            </div>
+            
+
+  <header>
+  <a href="" class="logo"><img src="" alt=""></a>
+  <div class="bx bx-menu" id="menu-icon" onclick="toggleMenu()">☰</div>
+  <ul class="navbar" id="navbar-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="https://wa.me/+6283876764338">Hubungi Whatsapp</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="catalog.html">Catalog</a></li>
+    <li><a href="service.html">Testimoni</a></li>
+    <li><a href="pemasangan.html">Testimoni Pemasangan</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</header>
+
+  <div class="parent">
+    <div class="cart-icon-container" onclick="toggleCart()">
+      <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="Keranjang" class="cart-icon" />
+      <span id="cart-count" class="cart-count">0</span>
+    </div>
+  </div>
+
+  <main>
+    <div class="container" id="product-list">
+      <!-- Produk akan dimuat dengan JavaScript -->
+    </div>
+  </main>
+
+  <section id="cart-section" class="cart-section" style="display: none;">
+    <h2>Keranjang Belanja</h2>
+    <div id="cart-items" class="cart-container"></div>
+    <button id="checkout-btn" class="checkout-btn" style="display: none;" onclick="goToCheckout()">Klik Untuk  Memesan</button>
+  </section>
+
+  <script>
+  function toggleMenu() {
+    const menu = document.getElementById("navbar-links");
+    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+  }
+</script>
+
+  <script src="shop.js"></script>
+</body>
+</html>
